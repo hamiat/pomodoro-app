@@ -25,7 +25,13 @@ h1 {
   text-shadow:  2px 2px #ffcf88;
 }
 
-.pomodoro p {
+.pomodoro h2 {
+  font-size: 2em;
+  color: orange;
+  text-shadow:  2px 2px #f9eca0;
+}
+
+.time{
   font-size: 3em;
   color: orange;
   text-shadow:  2px 2px #f9eca0;

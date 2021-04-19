@@ -4,17 +4,20 @@ import Length from './Length'
 
 function Testings(){
 
-    const [displayTime, setDisplayTime] = useState(25*60)
-    const [breakTime, setBreakTime] = useState(5*60)
-    const [sessionTime, setSessionTime] = useState(25*60)
+    const [displayTime, setDisplayTime] = useState(1*60)
+    const [breakTime, setBreakTime] = useState(2*60)
+    const [sessionTime, setSessionTime] = useState(3*60)
     const [timerOn, setTimerOn] = useState(false)
     const [onBreak, setOnBreak] = useState(false)
+    const[displayMessage, setDisplayMessage] = useState("")
+   
+    
     
 
     const playBell = () => {
         const startBell = new Audio(bell)
         startBell.currentTime = 0
-        startBell.play();
+        startBell.play()
     }
 
     const formatTime = (time) => {
@@ -28,7 +31,7 @@ function Testings(){
 
     const changeTime = (amount, type) => {
         if(type === 'break') {
-            if(breakTime <= 60 && amount < 0) {
+            if((breakTime <= 60 && amount < 0) || breakTime >= 60 * 60) {
                 return ;
             }
             setBreakTime((prev) => prev + amount)
@@ -36,7 +39,7 @@ function Testings(){
                 setDisplayTime(breakTime + amount)
             }
         } else {
-            if(sessionTime <= 60 && amount < 0) {
+            if((sessionTime <= 60 && amount < 0) || sessionTime >= 60 * 60) {
                 return;
             }
             setSessionTime ((prev) => prev + amount)
@@ -48,7 +51,7 @@ function Testings(){
     } 
 
     const controlTime = () => {
-        let second = 1000;
+        let second = 100;
         let date = new Date().getTime()
         let nextDate = new Date().getTime() +  second
         let onBreakVariable = onBreak
@@ -61,12 +64,12 @@ function Testings(){
                          if (prev <= 0 && !onBreakVariable) {
                             
                             onBreakVariable = true
-                            /* setOnBreak(true) */
+                            setDisplayMessage("Break time!")
                             return breakTime
                         } else if (prev <=0 && onBreakVariable){
                             
                             onBreakVariable = false
-                            /* setOnBreak(false) */
+                            setDisplayMessage("Study time!")
                             return sessionTime 
                         } 
                         return prev - 1
@@ -87,8 +90,10 @@ function Testings(){
         if (displayTime <= 0) {
           setOnBreak(true);
           playBell()
+          
         } else if (!timerOn && displayTime === breakTime) {
           setOnBreak(false);
+          
         }
        
       }, [displayTime, onBreak, timerOn, breakTime, sessionTime]);
@@ -102,10 +107,11 @@ function Testings(){
     }
 
     return(
-        <main className="pomodoro">
+        <main role="main" className="pomodoro">
             <h1>Pomodoro Time</h1>
-          {/*   <h2>{onBreak ? "Break" : "Session"}</h2> */}
-            <p>{formatTime(displayTime)}</p>
+         <h2>{onBreak ? null : <p>Let's get started!</p> }</h2> 
+            <h2>{displayMessage}</h2>
+            <p className="time">{formatTime(displayTime)}</p>
             <button className="mainBtns" onClick={controlTime}>{timerOn ? "Pause" : "Play"}</button>
             <button className="reset mainBtns" onClick={resetTime}>Reset</button>
 
