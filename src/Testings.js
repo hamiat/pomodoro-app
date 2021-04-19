@@ -4,9 +4,9 @@ import Length from './Length'
 
 function Testings(){
 
-    const [displayTime, setDisplayTime] = useState(1*60)
-    const [breakTime, setBreakTime] = useState(2*60)
-    const [sessionTime, setSessionTime] = useState(3*60)
+    const [displayTime, setDisplayTime] = useState(25*60)
+    const [breakTime, setBreakTime] = useState(5*60)
+    const [sessionTime, setSessionTime] = useState(25*60)
     const [timerOn, setTimerOn] = useState(false)
     const [onBreak, setOnBreak] = useState(false)
     const[displayMessage, setDisplayMessage] = useState("")
@@ -51,7 +51,7 @@ function Testings(){
     } 
 
     const controlTime = () => {
-        let second = 100;
+        let second = 1000;
         let date = new Date().getTime()
         let nextDate = new Date().getTime() +  second
         let onBreakVariable = onBreak
@@ -109,8 +109,7 @@ function Testings(){
     return(
         <main role="main" className="pomodoro">
             <h1>Pomodoro Time</h1>
-         <h2>{onBreak ? null : <p>Let's get started!</p> }</h2> 
-            <h2>{displayMessage}</h2>
+         <h2>{onBreak ? (displayMessage) : <p>Let's get started!</p> }</h2> 
             <p className="time">{formatTime(displayTime)}</p>
             <button className="mainBtns" onClick={controlTime}>{timerOn ? "Pause" : "Play"}</button>
             <button className="reset mainBtns" onClick={resetTime}>Reset</button>
