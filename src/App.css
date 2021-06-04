@@ -1,0 +1,79 @@
+#root {
+  height: 100%
+}
+
+body {
+  background-color: azure;
+  color: slategrey;
+  height: 100hv;
+  font-family: monospace;
+}
+.App {
+  height: 100%;
+  text-align: center;
+  margin-top: 5em;
+}
+
+.reset {
+  margin-bottom: 3em;
+}
+
+
+h1 {
+  font-size: 4em;
+  color: slategrey;
+  text-shadow:  2px 2px #535361;
+}
+
+.pomodoro h2 {
+  font-size: 2em;
+  color: #535361;
+ 
+}
+
+.time{
+  font-size: 3em;
+  color: #535361;
+
+}
+
+button {
+  margin: 0.5em;
+}
+
+
+.mainBtns, .lengths button {
+	box-shadow:inset 0px 1px 0px 0px #f9eca0;
+	background-color: azure;
+	border-radius:6px;
+	border:1px solid salmon;
+	display:inline-block;
+	cursor:pointer;
+	color: slategray;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ded17c;
+}
+.mainBtns:hover, .lengths button:hover {
+	background-color: salmon;
+}
+.mainBtns:active {
+	position:relative;
+	top:1px;
+}
+
+
+.lengths {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+
+
+
+
+
