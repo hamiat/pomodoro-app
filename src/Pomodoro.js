@@ -108,7 +108,7 @@ function Pomodoro() {
         Reset
       </button>
       
-<div class="lengths">
+<div className="lengths">
       <Length
         title="Set break time"
         type={"break"}
