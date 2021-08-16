@@ -1,1 +1,1 @@
-A humble Pomodoro app (productivity app) created with React.
+A Pomodoro app (productivity app) created with React. 
